@@ -11,7 +11,9 @@ import java.time.Instant;
 @Entity
 //@Table(name = "Status")
 public class Status {
+
     @Id
+    @GeneratedValue
     private Long id;
 
     @ManyToOne
@@ -20,4 +22,19 @@ public class Status {
     private boolean isUp;
     private Instant timestamp;
     private Duration duration;
+
+    public Status() {
+        //Do nothing
+    }
+
+    public Status(Probe probe, boolean isUp, Instant timestamp, Duration duration) {
+        this.probe = probe;
+        this.isUp = isUp;
+        this.timestamp = timestamp;
+        this.duration = duration;
+    }
+
+    public boolean isUp(){
+        return isUp;
+    }
 }
